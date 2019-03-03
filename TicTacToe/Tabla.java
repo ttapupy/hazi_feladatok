@@ -3,7 +3,7 @@ package TicTacToe;
 
 public class Tabla {
 
-    private static int M; // méret
+    private static int M=3; // méret
     private static String[] betuk = {"A", "B", "C", "D", "E", "F"};
     private char[][] tabla = new char[M][M];
 
@@ -32,8 +32,8 @@ public class Tabla {
     }
 
     public Tabla() {
-        for (int i = 0; i < tabla.length; i++) {
-            for (int j = 0; j < tabla.length; j++) {
+        for (int i = 0; i < M; i++) {
+            for (int j = 0; j < M; j++) {
                 tabla[i][j] = ' ';
             }
 

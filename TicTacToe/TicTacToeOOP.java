@@ -85,17 +85,12 @@ public class TicTacToeOOP {
             if (jatekosok[kor].isGepi()) {
                 System.out.print(
                         jatekosok[kor] + " lép: ");
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException ex) {
-                    Thread.currentThread().interrupt();
-                }
                 lep.gepiLepes(palya);
                 System.out.println(" " + lep.getLepes());
                 palya.setTablaCella(lep.getSor(), lep.getOszlop(), 'X');
                 kor = 1;
                 try {
-                    Thread.sleep(1000);
+                    Thread.sleep(1200);
                 } catch (InterruptedException ex) {
                     Thread.currentThread().interrupt();
                 }
