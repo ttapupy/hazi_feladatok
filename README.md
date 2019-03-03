@@ -1,2 +1,2 @@
 # hazi_feladatok
-java tanfolyam
+java tanfolyam házi feladat megoldásaim
