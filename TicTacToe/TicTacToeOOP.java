@@ -31,7 +31,7 @@ public class TicTacToeOOP {
         Jatekos j1 = new Jatekos(nev2, 'x', gep);
         Jatekos j2 = new Jatekos("Charlie", 'o', false);
         Jatekos[] jatekosok = {j1, j2};
-        HashMap<Character, String> felold = new HashMap<>();
+        HashMap<Character, String> felold = new HashMap<>();    //az eredmény kiírásához
         felold.put(j1.getJel(), j1.toString());
         felold.put(j2.getJel(), j2.toString());
         felold.put('#', "döntetlen");
@@ -58,7 +58,7 @@ public class TicTacToeOOP {
                 System.out.print(
                         jatekosok[kor] + " jön. Add meg az elfoglalni kívánt cellát: ");
 
-                Lepes jlep = new Lepes("huhu", 'w');
+                Lepes jlep = new Lepes("huhu", 'w');    //érvénytelenre állítom a lépést
                 do {
                     lepes = sc.nextLine();
                     jlep.setLepes(palya, lepes, jel);
