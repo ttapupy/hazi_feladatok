@@ -20,7 +20,7 @@ public class Lepes {
         this.lepes = lepes;
         this.betu = Character.toUpperCase(lepes.charAt(0));
         this.szam = Character.getNumericValue(lepes.charAt(1));
-        this.sor = betu - 'A';
+        this.sor = betu - 'A';  //ascii értékek
         this.oszlop = szam - 1;
         this.jel = jel;
     }
@@ -28,7 +28,7 @@ public class Lepes {
     public Lepes() {
     }
 
-    public boolean checkStep(Tabla t) {
+    public boolean checkStep(Tabla t) {     // megfelelő-e a beírt adat és foglalt-e a cella
 
         if (t.getM() + 'A' < betu + 1 || 'A' - betu > 0 || szam < 1 || szam > t.getM()
                 || lepes.length() != 2 || t.getTabla()[sor][oszlop].getJel()!= 32) {
@@ -37,7 +37,7 @@ public class Lepes {
         return true;
     }
 
-    public void gepiLepes(Tabla t, char jel) {
+    public void gepiLepes(Tabla t, char jel) {      //kikeresi az üres cellákat, majd azokból random választ
         List<String> ures = new ArrayList<String>();
         for (int i = 0; i < t.getM(); i++) {
             for (int j = 0; j < t.getM(); j++) {
