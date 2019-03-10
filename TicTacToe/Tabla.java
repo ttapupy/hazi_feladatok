@@ -4,10 +4,10 @@ package TicTacToe;
 public class Tabla {
 
     private static int m=3; // méret
-    private static final String[] BETUK = {"A", "B", "C", "D", "E", "F"};
+    private static final String[] BETUK = {"A", "B", "C", "D", "E", "F"};   // nagyobb pálya már unalmas lenne
     private Lepes[][] tabla = new Lepes [m][m];
 
-    public void rajzol() {
+    public void rajzol() {      // tábla rajzolása a konzolra
 
         System.out.print("    ");
         for (int i = 1; i <= m; i++) {
@@ -32,10 +32,10 @@ public class Tabla {
     }
     
     public char nyertes() {
-        int tempV;
-        int tempF;
-        int tempAB = 0;
-        int tempAJ = 0;
+        int tempV;      //vízszintes
+        int tempF;      //függőleges
+        int tempAB = 0; //bal átló
+        int tempAJ = 0; //jobb átló
         for (int i = 0; i < m; i++) {
             tempV = 0;
             tempF = 0;
@@ -51,7 +51,7 @@ public class Tabla {
             }
             if (tempV == m * 79 || tempF == m * 79) {     // méret * 'O' ascii értéke
                 return 'O';
-            } else if (tempV == m * 88 || tempF == m * 88) {
+            } else if (tempV == m * 88 || tempF == m * 88) {    // méret * 'X' ascii értéke
                 return 'X';
             }
         }
@@ -66,7 +66,7 @@ public class Tabla {
         public boolean vege() {
         for (int i = 0; i < tabla.length; i++) {
             for (int j = 0; j < tabla.length; j++) {
-                if (tabla[i][j].getJel() % 32 == 0) {
+                if (tabla[i][j].getJel() % 32 == 0) {   // az üres cella karaktere, azaz a space keresése
                     return false;
                 }
             }
@@ -95,7 +95,7 @@ public class Tabla {
         if (am > 2 && am < 7) {
             m = am;
         } else {
-            m = 3;
+            m = 3;      // ha rosszat ad meg, akkor 3x3-ason fog játszani
         }
     }
 
