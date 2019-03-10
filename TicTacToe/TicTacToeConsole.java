@@ -1,12 +1,13 @@
-package TicTacToe;
+package TicTacToeConsole;
 // @author vug
+//Konzolos játék
 // * 2 személyes vagy gép elleni Tic Tac Toe választható pályamérettel *
 
 import java.util.HashMap;
 import java.util.Scanner;
 
 
-public class TicTacToeOOP {
+public class TicTacToeConsole {
 
     public static void main(String[] args) {
         System.out.println("*    Tic-Tac-Toe    *\n "

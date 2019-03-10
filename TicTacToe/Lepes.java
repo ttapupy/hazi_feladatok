@@ -1,4 +1,4 @@
-package TicTacToe;
+package TicTacToeConsole;
 // @author vug
 
 import java.util.ArrayList;
