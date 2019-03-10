@@ -6,7 +6,6 @@ public class Tabla {
     private static int m=3; // méret
     private static final String[] BETUK = {"A", "B", "C", "D", "E", "F"};
     private Lepes[][] tabla = new Lepes [m][m];
-    //private Lepes cella;
 
     public void rajzol() {
 
