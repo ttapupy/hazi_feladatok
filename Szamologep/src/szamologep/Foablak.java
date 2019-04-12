@@ -68,18 +68,18 @@ public class Foablak extends javax.swing.JFrame {
         
         boolean numStart = false;       // számmal kezdődik-e a beírt szöveg
 
-        List<Integer> allNums = new ArrayList<>();
+        List<Double> allNums = new ArrayList<>();
         List<String> allOps = new ArrayList<>();
         
-        Pattern p1 = Pattern.compile("\\d+");   //számjegyek
+        Pattern p1 = Pattern.compile("[\\d\\.]+");   //számjegyek
         Matcher m1 = p1.matcher(expr);
         while (m1.find()) {
             if (m1.start()==0) {
                 numStart=true;
             }
-            allNums.add(Integer.parseInt(m1.group()));
+            allNums.add(Double.parseDouble(m1.group()));
         }
-        Pattern p2 = Pattern.compile("\\D+");       //nem számjegyek
+        Pattern p2 = Pattern.compile("[^\\d\\.]+");       //nem számjegyek
         Matcher m2 = p2.matcher(expr);
         while (m2.find()) {
             allOps.add(m2.group());
@@ -123,7 +123,6 @@ public class Foablak extends javax.swing.JFrame {
         btn7 = new javax.swing.JButton();
         btn8 = new javax.swing.JButton();
         btn9 = new javax.swing.JButton();
-        btnC = new javax.swing.JButton();
         btn4 = new javax.swing.JButton();
         btn5 = new javax.swing.JButton();
         btn6 = new javax.swing.JButton();
@@ -136,12 +135,14 @@ public class Foablak extends javax.swing.JFrame {
         btn1 = new javax.swing.JButton();
         btnMult = new javax.swing.JButton();
         btnDiv = new javax.swing.JButton();
+        btnPont = new javax.swing.JButton();
         display = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         result = new javax.swing.JTextArea();
+        btnC = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setBackground(new java.awt.Color(46, 75, 134));
+        setBackground(new java.awt.Color(229, 229, 216));
 
         jPanel1.setBackground(new java.awt.Color(229, 229, 216));
 
@@ -167,14 +168,6 @@ public class Foablak extends javax.swing.JFrame {
         btn9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn9ActionPerformed(evt);
-            }
-        });
-
-        btnC.setFont(new java.awt.Font("Ubuntu", 0, 36)); // NOI18N
-        btnC.setText("C");
-        btnC.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCActionPerformed(evt);
             }
         });
 
@@ -275,6 +268,16 @@ public class Foablak extends javax.swing.JFrame {
             }
         });
 
+        btnPont.setFont(new java.awt.Font("Ubuntu", 1, 36)); // NOI18N
+        btnPont.setText(".");
+        btnPont.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        btnPont.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+        btnPont.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPontActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -299,26 +302,26 @@ public class Foablak extends javax.swing.JFrame {
                     .addComponent(btn3, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnDiv, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(34, 34, 34)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnPlus, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnC, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnMinus, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnEq, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnPlus, javax.swing.GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE)
+                    .addComponent(btnMinus, javax.swing.GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE)
+                    .addComponent(btnEq, javax.swing.GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE)
+                    .addComponent(btnPont, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btn7, btn8, btn9, btnC});
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btn7, btn8, btn9});
 
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(37, Short.MAX_VALUE)
+                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btn7)
+                    .addComponent(btnPont, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btn7)
                         .addComponent(btn8)
-                        .addComponent(btn9)
-                        .addComponent(btnC)))
+                        .addComponent(btn9)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btn4)
@@ -341,7 +344,7 @@ public class Foablak extends javax.swing.JFrame {
                 .addGap(0, 13, Short.MAX_VALUE))
         );
 
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btn8, btn9, btnC});
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btn8, btn9});
 
         jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btn5, btn6, btnPlus});
 
@@ -381,6 +384,14 @@ public class Foablak extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(result);
 
+        btnC.setFont(new java.awt.Font("Ubuntu", 0, 36)); // NOI18N
+        btnC.setText("C");
+        btnC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -389,8 +400,10 @@ public class Foablak extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 395, Short.MAX_VALUE)
-                        .addGap(32, 32, 32))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 332, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnC, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
                     .addComponent(display)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -402,10 +415,12 @@ public class Foablak extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(display, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnC))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
 
         pack();
@@ -486,8 +501,8 @@ public class Foablak extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDivActionPerformed
 
     private void btnEqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEqActionPerformed
-
-            result.setText(" = "+calculate(display.getText()));
+            String res = calculate(display.getText());
+            result.setText(" = "+ (res.length()>9?res.substring(0, 10)+"...":res) );
         
     }//GEN-LAST:event_btnEqActionPerformed
 
@@ -508,6 +523,11 @@ public class Foablak extends javax.swing.JFrame {
     private void resultFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_resultFocusGained
         // TODO add your handling code here:
     }//GEN-LAST:event_resultFocusGained
+
+    private void btnPontActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPontActionPerformed
+        emptyDisplay();
+        display.setText(display.getText() + ".");
+    }//GEN-LAST:event_btnPontActionPerformed
 
     /**
      * @param args the command line arguments
@@ -561,6 +581,7 @@ public class Foablak extends javax.swing.JFrame {
     private javax.swing.JButton btnMinus;
     private javax.swing.JButton btnMult;
     private javax.swing.JButton btnPlus;
+    private javax.swing.JButton btnPont;
     private javax.swing.JTextField display;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
