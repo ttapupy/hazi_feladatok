@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Scene Scope="Project" version="2">
+    <Scope Scope="Faces Configuration Only"/>
+    <Scope Scope="Project">
+        <Node id="login.xhtml" x="406" y="356" zoom="true"/>
+        <Node id="order.xhtml" x="400" y="150" zoom="true"/>
+        <Node id="kosar.xhtml" x="129" y="297" zoom="true"/>
+        <Node id="index.xhtml" x="134" y="154" zoom="true"/>
+        <Node id="message.xhtml" x="748" y="173" zoom="true"/>
+    </Scope>
+    <Scope Scope="All Faces Configurations"/>
+</Scene>

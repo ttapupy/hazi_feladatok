@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Lemez Kínálat</title>
+    </h:head>
+    <h:body style="background: #463C49">
+        <h:form>
+            <h:commandLink style="color: white" value="Kosár tartalmának megtekintése (#{cDKosar.totalDb})" action="kosar"/>
+            <p></p>
+        
+        <h:dataTable  bgcolor="#F7F3E3" value="#{cDLista.lemezek}" var="cd">   //a datatable foreach-ként működik
+            <h:column>
+                <f:facet name="header">Előadó</f:facet>
+                #{cd.artist}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Cím</f:facet>
+                <h:outputText style="color: #235789; font-weight: bold"  value="#{cd.title}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">Kiadó</f:facet>
+                #{cd.company}
+            </h:column>
+             <h:column>
+                <f:facet name="header">Kiadás éve</f:facet>
+                #{cd.year}
+            </h:column>
+             <h:column>
+                <f:facet name="header">Ár</f:facet>
+                #{cd.price} €
+            </h:column>
+            <h:column>
+                <f:facet name="header">Vásárlás</f:facet>
+                <h:commandButton value="Kosárba" action="#{cDKosar.hozzaad(cd)}"/>
+                
+            </h:column>
+        </h:dataTable>
+        </h:form>
+    </h:body>
+</html>
+

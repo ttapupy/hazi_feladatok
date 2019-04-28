@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>megrendelés</title>
+        #{cDKosar.ujMegrendeles()}
+    </h:head>
+    <h:body>
+        <h:form>
+            
+            <h:dataTable  bgcolor="#DDFFF7" value="#{cDKosar.order.orderitems}" var="ordit"> 
+            <h:column>
+                <f:facet name="header">Mennyiség</f:facet>
+                #{ordit.qty} db
+                <f:facet name="footer">Összesen: #{cDKosar.totalDb} db</f:facet>
+            </h:column>
+            <h:column>
+                <f:facet name="header">Előadó</f:facet>
+                #{ordit.product.artist}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Cím</f:facet>
+                <h:outputText style="font-weight: bold"  value="#{ordit.product.title}"/>
+            </h:column>
+            
+             <h:column>
+                <f:facet name="header">Darabár</f:facet>
+                #{ordit.product.price} €
+                <f:facet  name="footer">Végösszeg: </f:facet>
+            </h:column>
+            <h:column>
+                <f:facet name="header">Összesen </f:facet>
+                <h:outputText  value="#{ordit.qty*ordit.price }">
+                    <f:convertNumber type="currency" currencySymbol="€" minFractionDigits="2" maxFractionDigits="2" pattern="#,###" />
+                    </h:outputText>
+                
+                <f:facet name="footer">
+                    <h:outputText value="#{cDKosar.totalOsszegOfOrder}">
+                    <f:convertNumber type="currency" currencySymbol="€" locale="hu_HU" minFractionDigits="2" maxFractionDigits="2" pattern="#,###" />
+                    </h:outputText>
+                    </f:facet>
+            </h:column>
+        </h:dataTable>
+            <br/>
+            <h:commandButton style="margin-left: 25%" value="Véglegesítés" action="#{cDKosar.finalizeOrder(vevo.vevo)}"/>
+         </h:form>
+    </h:body>
+</html>
+
